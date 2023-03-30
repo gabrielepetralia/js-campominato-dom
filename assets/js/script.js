@@ -6,6 +6,7 @@ const btnResetGrid = document.querySelector(".btn-reset-grid")
 const grid = document.querySelector(".grid-container")
 const bombs=[];
 const numBombs=16;
+let points=0;
 
 btnGenerateGrid.addEventListener("click", function(){
   const diff = document.querySelector(".select-diff").value;
@@ -25,7 +26,6 @@ btnGenerateGrid.addEventListener("click", function(){
 
   generateCells(numCells);
   generateBombs(numCells);
-  console.log(bombs)
   
   generate.classList.add("hide")
   reset.classList.remove("hide")
@@ -33,6 +33,8 @@ btnGenerateGrid.addEventListener("click", function(){
 
 btnResetGrid.addEventListener("click", function(){
   grid.innerHTML = "";
+  bombs=[];
+  points = 0;
 
   reset.classList.add("hide")
   generate.classList.remove("hide")
@@ -44,13 +46,10 @@ btnResetGrid.addEventListener("click", function(){
 function generateCells(nCells) {
   for(let i = 0; i < nCells; i++)
   {
-    const cell = document.createElement("div")
+    const cell = document.createElement("div");
     cell.cellId = i + 1;
-    cell.addEventListener("click", function(){
-      cell.classList.add("clicked");
-      console.log(this.cellId)
-    })
-    cell.classList.add("cella")
+    cell.classList.add("cella");
+    cell.addEventListener("click", handleClickCell);
 
     if(!(i%Math.sqrt(nCells))) {
       const row = document.createElement("div")
@@ -73,4 +72,13 @@ function generateBombs(nCells) {
 
 function getRandomNumber(min,max){
   return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function handleClickCell(){
+  if(bombs.includes(this.cellId)) {
+    this.classList.add("bomba");
+  } else if(!this.classList.contains("clicked")){
+    this.classList.add("clicked");
+    points ++;
+  }
 }
