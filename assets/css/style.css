@@ -46,10 +46,15 @@ h1 {
 }
 
 .cella {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
   height: 50px;
   width: 50px;
   border: 2px solid white;
-  cursor: cell;
+  cursor: pointer;
 }
 
 .generate-grid .btn-play,
@@ -61,17 +66,23 @@ h1 {
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
-  background-color: rgb(100, 190, 212);
+  background-color: rgb(67, 152, 174);
   border: 2px solid white;
   cursor: pointer;
 }
 
 .clicked {
   background-color: rgb(100, 205, 232);
+  cursor: not-allowed;
 }
 
 .bomba {
   background-color: rgb(219, 121, 94);
+}
+
+.bomba::after {
+  content: "\f1e2";
+  font-family: FontAwesome;
 }
 
 .overlay-end-game {
