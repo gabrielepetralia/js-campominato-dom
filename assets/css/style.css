@@ -12,7 +12,13 @@ body {
 h1 {
   font-size: 4rem;
   color: white;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
+}
+
+.end-message {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 30px;
 }
 
 .hide {
@@ -32,6 +38,7 @@ h1 {
   width: auto;
   height: auto;
   background-color: rgb(67, 152, 174);
+  margin-bottom: 30px;
 }
 
 .grid-row {
@@ -45,14 +52,9 @@ h1 {
   cursor: cell;
 }
 
-.generate-grid,
-.reset-grid {
-  margin-top: 50px;
-}
-
-.generate-grid .btn-generate-grid,
+.generate-grid .btn-play,
 .generate-grid .select-diff,
-.reset-grid .btn-reset-grid {
+.reset-grid .btn-restart {
   padding: 10px 20px;
   margin: 0 10px;
   border: 0px;

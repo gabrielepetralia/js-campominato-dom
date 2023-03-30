@@ -1,14 +1,15 @@
 const generate = document.querySelector(".generate-grid")
 const reset = document.querySelector(".reset-grid")
-const btnGenerateGrid = document.querySelector(".btn-generate-grid")
-const btnResetGrid = document.querySelector(".btn-reset-grid")
+const btnPlay = document.querySelector(".btn-play")
+const btnRestart = document.querySelector(".btn-restart")
 
 const grid = document.querySelector(".grid-container")
-let bombs=[];
-const numBombs=3;
-let points=0;
+const endMessage = document.querySelector(".end-message")
+let bombs = [];
+const numBombs = 16;
+let points = 0;
 
-btnGenerateGrid.addEventListener("click", function(){
+btnPlay.addEventListener("click", function(){
   const diff = document.querySelector(".select-diff").value;
   let numCells;
   switch(diff)
@@ -26,15 +27,15 @@ btnGenerateGrid.addEventListener("click", function(){
 
   generateCells(numCells);
   generateBombs(numCells);
-  console.log(bombs)
   
   generate.classList.add("hide")
   reset.classList.remove("hide")
 })
 
-btnResetGrid.addEventListener("click", function(){
+btnRestart.addEventListener("click", function(){
   grid.innerHTML = "";
-  bombs=[];
+  endMessage.innerHTML = "";
+  bombs = [];
   points = 0;
 
   reset.classList.add("hide")
@@ -76,27 +77,32 @@ function getRandomNumber(min,max){
 }
 
 function handleClickCell(){
+  const cells = document.getElementsByClassName("cella")
   if(bombs.includes(this.cellId)) {
     this.classList.add("bomba");
-    endGame();
+    endGame(false,cells.length);
   } else if(!this.classList.contains("clicked")){
     this.classList.add("clicked");
     points ++;
-    console.log(points);
 
-    const cells = document.getElementsByClassName("cella")
     if(points ===  cells.length - numBombs)
     {
-      endGame();
+      endGame(true,cells.length);
     }
   }
 }
 
-function endGame(){
+function endGame(isWin,numCells){
   const overlayEndGame = document.createElement("div");
   overlayEndGame.classList.add("overlay-end-game");
   grid.append(overlayEndGame);
   showBombs();
+
+  if(isWin){
+    endMessage.innerHTML = `Hai vinto! Hai totalizzato ben ${points} punti su ${numCells - numBombs}!`
+  } else {
+    endMessage.innerHTML = `Hai perso! Hai totalizzato solo ${points} punti su ${numCells - numBombs}!`
+  }
 }
 
 function showBombs(){
