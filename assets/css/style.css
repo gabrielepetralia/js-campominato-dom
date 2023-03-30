@@ -28,6 +28,7 @@ h1 {
 }
 
 .grid-container {
+  position: relative;
   width: auto;
   height: auto;
   background-color: rgb(67, 152, 174);
@@ -69,4 +70,13 @@ h1 {
 
 .bomba {
   background-color: rgb(219, 121, 94);
+}
+
+.overlay-end-game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);  
 }

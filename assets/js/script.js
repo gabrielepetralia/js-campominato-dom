@@ -4,8 +4,8 @@ const btnGenerateGrid = document.querySelector(".btn-generate-grid")
 const btnResetGrid = document.querySelector(".btn-reset-grid")
 
 const grid = document.querySelector(".grid-container")
-const bombs=[];
-const numBombs=16;
+let bombs=[];
+const numBombs=3;
 let points=0;
 
 btnGenerateGrid.addEventListener("click", function(){
@@ -26,6 +26,7 @@ btnGenerateGrid.addEventListener("click", function(){
 
   generateCells(numCells);
   generateBombs(numCells);
+  console.log(bombs)
   
   generate.classList.add("hide")
   reset.classList.remove("hide")
@@ -77,8 +78,34 @@ function getRandomNumber(min,max){
 function handleClickCell(){
   if(bombs.includes(this.cellId)) {
     this.classList.add("bomba");
+    endGame();
   } else if(!this.classList.contains("clicked")){
     this.classList.add("clicked");
     points ++;
+    console.log(points);
+
+    const cells = document.getElementsByClassName("cella")
+    if(points ===  cells.length - numBombs)
+    {
+      endGame();
+    }
+  }
+}
+
+function endGame(){
+  const overlayEndGame = document.createElement("div");
+  overlayEndGame.classList.add("overlay-end-game");
+  grid.append(overlayEndGame);
+  showBombs();
+}
+
+function showBombs(){
+  const cells = document.getElementsByClassName("cella")
+  for(let i = 0; i < cells.length; i++)
+  {
+    const cell = cells[i];
+    if(bombs.includes(cell.cellId)) {
+      cell.classList.add("bomba");
+    }
   }
 }
