@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(93, 183, 206);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 80px;
+}
+
+.hide {
+  display: none;
+}
+
+.main-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container {
+  width: auto;
+  height: auto;
+  background-color: rgb(67, 152, 174);
+}
+
+.grid-row {
+  display: flex;
+}
+
+.cell {
+  height: 50px;
+  width: 50px;
+  border: 2px solid white;
+  cursor: cell;
+}
+
+.generate-grid,
+.reset-grid {
+  margin-top: 50px;
+}
+
+.generate-grid .btn-generate-grid,
+.generate-grid .select-diff,
+.reset-grid .btn-reset-grid {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 0px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(67, 152, 174);
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.clicked {
+  background-color: rgb(116, 218, 243);
+}
