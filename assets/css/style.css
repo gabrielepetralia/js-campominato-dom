@@ -15,6 +15,10 @@ h1 {
   margin-bottom: 50px;
 }
 
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
 .end-message {
   font-size: 1.8rem;
   color: white;
@@ -59,7 +63,8 @@ h1 {
 
 .generate-grid .btn-play,
 .generate-grid .select-diff,
-.reset-grid .btn-restart {
+.reset-grid .btn-restart,
+.reset-grid .btn-flag {
   padding: 10px 20px;
   margin: 0 10px;
   border: 0px;
@@ -82,6 +87,25 @@ h1 {
 
 .bomba::after {
   content: "\f1e2";
+  font-family: FontAwesome;
+}
+
+.btn-flag.iconFlag::after {
+  content: "\f024";
+  font-family: FontAwesome;
+}
+
+.btn-flag.iconNumber::after {
+  content: "\31";
+  font-family: FontAwesome;
+}
+
+.flag {
+  background-color: rgb(235, 235, 107);
+}
+
+.flag::after {
+  content: "\f024";
   font-family: FontAwesome;
 }
 
